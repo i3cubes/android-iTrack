@@ -62,7 +62,9 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         }
 
         lm = (LocationManager) this.getActivity().getSystemService(Context.LOCATION_SERVICE);
-        String provider = lm.getBestProvider(new Criteria(), true);
+        //String provider = lm.getBestProvider(new Criteria(), true);
+        String provider = LocationManager.GPS_PROVIDER;
+
         if (ActivityCompat.checkSelfPermission(this.getParentFragment().getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this.getParentFragment().getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -78,7 +80,14 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
         }
+
         l = lm.getLastKnownLocation(provider);
+        if(l==null){
+            //new LatLng(6.903992, 80.00183);
+            l=new Location(LocationManager.GPS_PROVIDER);
+            l.setLatitude(6.903992);
+            l.setLongitude(80.00183);
+        }
         ll = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
