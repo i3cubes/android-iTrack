@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -64,7 +65,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         lm = (LocationManager) this.getActivity().getSystemService(Context.LOCATION_SERVICE);
         //String provider = lm.getBestProvider(new Criteria(), true);
         String provider = LocationManager.GPS_PROVIDER;
-
+        //Toast.makeText(getActivity(), "provider"+provider, Toast.LENGTH_SHORT).show();
         if (ActivityCompat.checkSelfPermission(this.getParentFragment().getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this.getParentFragment().getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -199,5 +200,6 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         // after generating our bitmap we are returning our bitmap.
         return BitmapDescriptorFactory.fromBitmap(bitmap);
     }
+
 
 }
