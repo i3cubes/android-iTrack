@@ -92,8 +92,8 @@ public class LoginActivity extends AppCompatActivity {
             final ProgressBar loadingProgressBar = binding.loading;
             final TextView message = binding.message;
             loginButton.setEnabled(true);
-            usernameEditText.setText("nafees_nisthar@emri.in");
-            passwordEditText.setText("NGS@#662");
+            //usernameEditText.setText("nafees_nisthar@emri.in");
+            //passwordEditText.setText("NGS@#662");
             /*
             loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
                 @Override
